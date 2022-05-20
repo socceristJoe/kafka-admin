@@ -1,15 +1,15 @@
 #!/bin/bash
 vim /etc/ssh/sshd_config
 # Packages
-sudo apt-get update && \
+apt-get update && \
       sudo apt-get -y install wget ca-certificates zip net-tools vim nano tar netcat
 
 # Java Open JDK 8
-sudo apt-get -y install openjdk-8-jdk
+apt-get -y install openjdk-8-jdk
 java -version
 
 # Disable RAM Swap - can set to 0 on certain Linux distro
-sudo sysctl vm.swappiness=1
+sysctl vm.swappiness=1
 echo 'vm.swappiness=1' | sudo tee --append /etc/sysctl.conf
 
 # Add hosts entries (mocking DNS) - put relevant IPs here
@@ -40,13 +40,14 @@ ls /
 echo "ruok" | nc localhost 2181 ; echo
 
 # Install Zookeeper boot scripts
+rm /etc/init.d/zookeeper
 nano /etc/init.d/zookeeper
 chmod +x /etc/init.d/zookeeper
 chown root:root /etc/init.d/zookeeper
 # you can safely ignore the warning
 update-rc.d zookeeper defaults
 # stop zookeeper
-sudo service zookeeper stop
+service zookeeper stop
 # verify it's stopped
 nc -vz localhost 2181
 # start zookeeper

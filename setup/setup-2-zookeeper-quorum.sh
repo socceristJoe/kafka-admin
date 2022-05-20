@@ -17,6 +17,9 @@ service zookeeper status
 # observe the logs - need to do this on every machine
 cat /root/kafka/logs/zookeeper.out | head -100
 nc -vz localhost 2181
+nc -vz zookeeper1 2181
+nc -vz zookeeper2 2181
+nc -vz zookeeper3 2181
 nc -vz localhost 2888
 nc -vz localhost 3888
 echo "ruok" | nc localhost 2181 ; echo
