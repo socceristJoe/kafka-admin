@@ -6,9 +6,9 @@
 # Add file limits configs - allow to open 100,000 file descriptors
 echo "* hard nofile 100000
 * soft nofile 100000" | sudo tee --append /etc/security/limits.conf
-sudo reboot
-sudo service zookeeper start
-sudo chown -R ubuntu:ubuntu /data/kafka
+reboot
+service zookeeper start
+chown -R root:root /data/kafka
 
 # edit the config
 rm config/server.properties
@@ -18,18 +18,22 @@ nano config/server.properties
 bin/kafka-server-start.sh config/server.properties
 
 # Install Kafka boot scripts
-sudo nano /etc/init.d/kafka
-sudo chmod +x /etc/init.d/kafka
-sudo chown root:root /etc/init.d/kafka
+nano /etc/init.d/kafka
+chmod +x /etc/init.d/kafka
+chown root:root /etc/init.d/kafka
 # you can safely ignore the warning
-sudo update-rc.d kafka defaults
+update-rc.d kafka defaults
 
 # start kafka
-sudo service kafka start
+service kafka start
+service kafka status
 # verify it's working
 nc -vz localhost 9092
+nc -vz kafka1 9092
+nc -vz kafka2 9092
+nc -vz kafka3 9092
 # look at the logs
-cat /home/ubuntu/kafka/logs/server.log
+cat /root/kafka/logs/server.log
 # make sure to fix the __consumer_offsets topic
 bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka --config min.insync.replicas=1 --topic __consumer_offsets --alter
 

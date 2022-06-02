@@ -43,6 +43,6 @@ lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
 
 # reboot to test actions
 reboot
-sudo service zookeeper start
+service zookeeper start
 
 reference: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/attach-disk-portal

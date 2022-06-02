@@ -5,9 +5,9 @@ echo "* hard nofile 100000
 * soft nofile 100000" | sudo tee --append /etc/security/limits.conf
 
 # reboot for the file limit to be taken into account
-sudo reboot
-sudo service zookeeper start
-sudo chown -R ubuntu:ubuntu /data/kafka
+reboot
+service zookeeper start
+chown -R root:root /data/kafka
 
 # edit kafka configuration
 rm config/server.properties
