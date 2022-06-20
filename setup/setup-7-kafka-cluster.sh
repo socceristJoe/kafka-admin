@@ -1,4 +1,5 @@
 #!/bin/bash
+service zookeeper start
 
 # Make sure you have done the steps from 5 on all machines
 # we repeat the steps from 6
