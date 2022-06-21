@@ -28,6 +28,7 @@ update-rc.d kafka defaults
 # start kafka
 service kafka start
 service kafka status
+service kafka stop
 # verify it's working
 nc -vz localhost 9092
 nc -vz kafka1 9092
