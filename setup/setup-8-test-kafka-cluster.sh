@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd /root/kafka
+
 # we can create topics with replication-factor 3 now!
 bin/kafka-topics.sh --zookeeper zookeeper1:2181,zookeeper2:2181,zookeeper3:2181/kafka --create --topic second_topic --replication-factor 3 --partitions 3
 
