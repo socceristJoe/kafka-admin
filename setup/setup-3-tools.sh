@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo apt-get update
+apt-get update
 
 # Install packages to allow apt to use a repository over HTTPS:
-sudo apt-get install -y \
+apt-get install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -12,17 +12,16 @@ sudo apt-get install -y \
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 # set up the stable repository.
-sudo add-apt-repository \
+add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
 # install docker
-sudo apt-get update
-sudo apt-get install -y docker-ce docker-compose
+apt-get install -y docker-ce docker-compose
 
 # give ubuntu permissions to execute docker
-sudo usermod -aG docker $(whoami)
+usermod -aG docker $(whoami)
 # log out
 exit
 # log back in
