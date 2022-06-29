@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run   -d   -p 9000:9000   -e HTTP_PORT=9000   --name zoonavigator   --restart unless-stopped   elkozmon/zoonavigator:1.1.2
+docker run   -d   -p 9001:9000   -e HTTP_PORT=9000   --name zoonavigator-2   --restart unless-stopped   elkozmon/zoonavigator:1.1.2
 
 Depreciated:
 cd /root/kafka/tools
